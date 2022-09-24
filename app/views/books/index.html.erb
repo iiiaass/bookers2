@@ -1,8 +1,8 @@
 <h2>Books</h2>
 <% @books.each do |book| %>
 <div>
-  <p><%=image_tag 'sample-author1.jpg' %></p>
-  <p>Title:<%=book.title %></p>
+  <p><%=link_to image_tag book.user.get_profile_image(100,100) user_path(@user.id)%></p>
+  <p>Title:<%=link_to book.title,book_path(book.id) %></p>
   <p>Opinion:<%=book.body %></p>
 </div>
 <%end%>
@@ -17,3 +17,4 @@
 <%=f.submit'Create Book' %>
 <%end%>
 </div>
+
