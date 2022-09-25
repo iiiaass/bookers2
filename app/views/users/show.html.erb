@@ -1,11 +1,17 @@
-<h2>User info</h2>
-<p><%=image_tag current_user.get_profile_image(100,100)%></p>
-<p>name:<%=@user.name %></p>
-<p>introduction:<%=@user.introduction %></p>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<tbody>
+ <h2>User info</h2>
+<%=image_tag current_user.get_profile_image(100,100)%>
+<tr>
+ <th>name:<%=@user.name %></th>
+</tr>
+<tr>
+ <th>introduction:<%=@user.introduction %>
+</tr>
 <% if @user==current_user %>
 <%=link_to "Edit",edit_user_path(@user.id) %>
 <%end%>
-
+</tbody>
 
 <h1>New book</h1>
 <%=form_with model:@book do |f| %>
