@@ -1,7 +1,10 @@
 <h2>User info</h2>
-<p><%=image_tag 'sample-author1.jpg' %></p>
+<p><%=image_tag current_user.get_profile_image(100,100) %></p>
 <p>name:<%=current_user.name %></p>
 <p>introduction:<%=current_user.introduction %></p>
+
+<%=link_to "Edit",edit_user_path(current_user) %>
+
 
 
 <h1>New book</h1>
@@ -15,7 +18,8 @@
 <%end%>
 
 <h2>Users</h2>
-<% @user.each do |f| %>
-<p>image:<%=image_tag 'sample-author1.jpg' %></p>
+<% @users.each do |f| %>
+<p>image:<%=image_tag f.get_profile_image(100,100) %></p>
 <p>name:<%=f.name %></p>
+<%=link_to "Show",user_path(f.id) %>
 <%end%>

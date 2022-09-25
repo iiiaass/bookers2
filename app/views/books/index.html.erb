@@ -1,11 +1,18 @@
-<h2>Books</h2>
-<% @books.each do |book| %>
-<div>
-  <p><%=link_to image_tag book.user.get_profile_image(100,100) user_path(@user.id)%></p>
-  <p>Title:<%=link_to book.title,book_path(book.id) %></p>
-  <p>Opinion:<%=book.body %></p>
-</div>
+<% if @book.errors.any? %>
+<%=@book.errors.count %>error prohibited this obj from being saved:
+<ul>
+ <% @book.errors.full_messages.each do |message| %>
+ <li><%=message %></li>
+ <%end%>
+</ul>
 <%end%>
+
+<h1>User info</h1>
+<p><%=image_tag current_user.get_profile_image(100,100) %></p>
+<p>name:<%=current_user.name %></p>
+<p>introduction:<%=current_user.introduction %></p>
+<%=link_to "Edit",edit_user_path(current_user) %>
+
 
 <div>
 <h1>New book</h1>
@@ -17,4 +24,18 @@
 <%=f.submit'Create Book' %>
 <%end%>
 </div>
+
+
+
+<h2>Books</h2>
+<% @books.each do |book| %>
+<div>
+  <%=link_to  user_path(current_user) do %>
+  <%=image_tag book.user.get_profile_image(100,100) %>
+  <%end%>
+  <p>Title:<%=link_to book.title,book_path(book.id) %></p>
+  <p>Opinion:<%=book.body %></p>
+</div>
+<%end%>
+
 
