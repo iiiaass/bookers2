@@ -4,7 +4,8 @@ class User < ApplicationRecord
   has_one_attached :profile_image
 
   validates:name,presence:true
-  validates:introduction,presence:true
+  # validates:introduction
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
